@@ -1,6 +1,9 @@
 import { GifItem } from './GifItem';
 import { useFetchGifs } from '../hooks/useFetchGifs';
 import { ClipLoader } from 'react-spinners';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 
 export const GifGrid = ({ category }) => {
 
@@ -12,7 +15,7 @@ export const GifGrid = ({ category }) => {
             
             <div className="card-grid"> {
                 isLoading 
-                ? <ClipLoader /> 
+                ? <ClipLoader aria-label='spinner'/> 
                 : 
                     images.map( ( image ) => (
                         <GifItem 
@@ -25,4 +28,8 @@ export const GifGrid = ({ category }) => {
 
         </>
     )
+}
+
+GifGrid.propTypes = {
+    category: PropTypes.string.isRequired,
 }
